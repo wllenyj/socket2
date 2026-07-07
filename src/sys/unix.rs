@@ -432,11 +432,12 @@ type IovLen = usize;
     target_os = "tvos",
     target_os = "watchos",
     target_os = "espidf",
-    target_os = "nuttx",
     target_os = "vita",
     target_os = "cygwin",
 ))]
 type IovLen = c_int;
+#[cfg(target_os = "nuttx")]
+type IovLen = libc::c_ulong;
 
 /// Unix only API.
 impl Domain {
